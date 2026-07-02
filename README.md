@@ -134,3 +134,8 @@ The application workflow is as follows:
 
 ---
 
+## My Contribution
+In this project, my primary responsibilities were:
+
+- **Frontend Development**: Built and refined the user interface using JavaScript/HTML, focusing on usability, responsiveness, and smooth user interaction.
+- **Database Creation**: Designed and created the project database structure, including core schema/tables needed to support the application’s data flow.
