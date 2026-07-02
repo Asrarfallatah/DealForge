@@ -1,0 +1,32 @@
+[
+    {
+        "input": "Generate dashboard report",
+        "expected_tool": "generate_dashboard",
+        "expected_intent": "analytics.dashboard",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Show conversion report",
+        "expected_tool": "conversion_report",
+        "expected_intent": "analytics.conversion",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Show lead pipeline",
+        "expected_tool": "get_lead_pipeline",
+        "expected_intent": "analytics.pipeline",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Show deal pipeline",
+        "expected_tool": "get_deals_pipeline",
+        "expected_intent": "analytics.pipeline",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Show top lead sources",
+        "expected_tool": "top_lead_sources",
+        "expected_intent": "analytics.sources",
+        "expected_output_type": "tool_call"
+    }
+]

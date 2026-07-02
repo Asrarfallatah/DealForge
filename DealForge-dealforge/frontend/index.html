@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DealForge | Agentic CRM</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="assets/dealforge-logo.png" alt="DealForge logo" onerror="this.style.display='none'" />
+        <div><strong>DealForge</strong><span>Agentic CRM</span></div>
+      </div>
+      <nav class="nav" id="nav">
+        <button data-page="home" class="active">Home</button>
+        <button data-page="assistant">CRM Assistant</button>
+        <button data-page="dashboard">Dashboard</button>
+        <button data-page="approvals">Approvals</button>
+        <button data-page="pipeline">Pipeline</button>
+        <button data-page="leads">Leads</button>
+        <button data-page="companies">Companies</button>
+        <button data-page="contacts">Contacts</button>
+        <button data-page="deals">Deals</button>
+        <button data-page="tasks">Tasks</button>
+        <button data-page="reports">Reports</button>
+        <button data-page="settings">Settings</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="pageTitle">Home</h1>
+          <p id="pageSub">Executive CRM overview and operational priorities.</p>
+        </div>
+        <div class="top-actions">
+          <div class="connection-pill"><span id="statusDot" class="dot"></span><span id="apiStatus">Checking backend</span></div>
+          <button id="refreshBtn">Refresh</button>
+          <button id="healthBtn">Health check</button>
+        </div>
+      </header>
+
+      <section id="home" class="page active">
+        <div class="hero-card">
+          <div>
+            <span class="eyebrow">Sales command overview</span>
+            <h2>What needs attention today?</h2>
+            <p>DealForge converts sales conversations into controlled CRM operations, keeps human approval before database writes, and gives managers a clean operational view.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn-primary" data-go="assistant">Open CRM Assistant</button>
+            <button class="btn-muted" data-go="reports">Generate report</button>
+          </div>
+        </div>
+        <div class="kpi-grid" id="homeKpis"></div>
+        <div class="layout-2">
+          <section class="panel"><div class="panel-head compact"><h3>Pipeline Distribution</h3><span id="pipelineTotal" class="hint"></span></div><div id="homePipeline" class="bar-chart"></div></section>
+          <section class="panel"><div class="panel-head compact"><h3>AI Priorities</h3><button data-go="assistant">Resolve</button></div><div id="recommendations" class="stack-list"></div></section>
+        </div>
+        <div class="layout-2">
+          <section class="panel"><div class="panel-head compact"><h3>Approval Attention</h3><button data-go="approvals">View history</button></div><div id="homeApprovals" class="stack-list"></div></section>
+          <section class="panel"><div class="panel-head compact"><h3>Recent Work</h3><button data-go="dashboard">Open dashboard</button></div><div id="homeActivity" class="stack-list"></div></section>
+        </div>
+      </section>
+
+      <section id="assistant" class="page">
+        <div class="assistant-grid">
+          <section class="chat-card panel no-pad">
+            <div class="chat-toolbar">
+              <div><strong>CRM Assistant</strong><span>Natural-language updates, lookups, reports, and approvals.</span></div>
+              <div class="toolbar-actions"><button id="sampleBtn">Insert sample</button><button id="clearChatBtn">Clear chat</button></div>
+            </div>
+            <div id="chat" class="chat"></div>
+            <form id="chatForm" class="composer">
+              <textarea id="messageInput" placeholder="Example: I spoke with Ahmed from GulfTech. They are interested in AI training for 25 employees, budget 80K SAR. Send proposal next Monday and move the lead to Qualified."></textarea>
+              <button class="btn-primary" type="submit">Send</button>
+            </form>
+          </section>
+          <aside class="context-panel panel">
+            <h3>Current CRM Work Item</h3>
+            <div id="activeExtraction" class="empty-state">No pending CRM action yet.</div>
+            <h3 class="section-title">Today’s Queue</h3>
+            <div class="queue-metrics">
+              <div><span>Pending approvals</span><strong id="pendingCount">0</strong></div>
+              <div><span>Open tasks</span><strong id="openTaskCount">0</strong></div>
+              <div><span>Pipeline value</span><strong id="pipelineValue">SAR 0</strong></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="dashboard" class="page">
+        <div class="kpi-grid" id="kpis"></div>
+        <div class="layout-2">
+          <section class="panel"><h3>Lead Pipeline</h3><div id="pipelineChart" class="bar-chart"></div></section>
+          <section class="panel"><h3>Task Health</h3><div id="taskChart" class="bar-chart"></div></section>
+        </div>
+        <section class="panel"><div class="panel-head compact"><h3>Operational Snapshot</h3><span class="hint">Live data from PostgreSQL endpoints</span></div><div id="opsSnapshot" class="snapshot-grid"></div></section>
+      </section>
+
+      <section id="approvals" class="page">
+        <div class="panel"><div class="panel-head"><div><h3>Approval Center</h3><p class="hint">This page is a clean pending/history view. Decisions are handled from the CRM Assistant chat cards.</p></div><button data-go="assistant">Open Assistant</button></div><div id="approvalList" class="approval-list"></div></div>
+      </section>
+
+      <section id="pipeline" class="page"><div class="panel"><div class="panel-head"><div><h3>Pipeline Board</h3><p class="hint">Drag-free status board. AI-generated writes still go through approval.</p></div></div><div id="kanban" class="kanban"></div></div></section>
+      <section id="leads" class="page"><div class="panel"><h3>Leads</h3><div id="leadsTable" class="data-table"></div></div></section>
+      <section id="companies" class="page"><div class="panel"><h3>Companies</h3><div id="companiesTable" class="data-table"></div></div></section>
+      <section id="contacts" class="page"><div class="panel"><h3>Contacts</h3><div id="contactsTable" class="data-table"></div></div></section>
+      <section id="deals" class="page"><div class="panel"><h3>Deals</h3><div id="dealsTable" class="data-table"></div></div></section>
+      <section id="tasks" class="page"><div class="panel"><div class="panel-head"><div><h3>Tasks</h3><p class="hint">Completing a task updates the backend task record.</p></div></div><div id="tasksTable" class="data-table"></div></div></section>
+
+      <section id="reports" class="page">
+        <div class="reports-grid" id="reportCatalog"></div>
+        <div class="panel report-panel">
+          <div class="panel-head"><div><h3 id="reportTitle">Manager Briefing</h3><p class="hint" id="reportSubtitle">Dashboard-ready report preview saved locally.</p></div><div class="toolbar-actions"><button id="saveReportBtn">Save snapshot</button><button id="downloadReport">Download PDF</button></div></div>
+          <div id="reportBox" class="report-box"></div>
+        </div>
+      </section>
+
+      <section id="settings" class="page"><div class="panel settings"><h3>Production Readiness</h3><div id="readiness"></div></div></section>
+    </main>
+  </div>
+
+  <dialog id="editDialog" class="edit-dialog">
+    <form method="dialog" id="editForm">
+      <h3>Edit pending CRM action</h3>
+      <p>Correct the fields before approval. No JSON editing is required.</p>
+      <div class="edit-grid" id="editFields"></div>
+      <div class="dialog-actions"><button value="cancel" class="btn-muted">Cancel</button><button value="save" class="btn-primary">Save changes</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

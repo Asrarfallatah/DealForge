@@ -1,0 +1,62 @@
+[
+    {
+        "input": "Add a new lead named Ahmed from ABC company with a budget of 100k",
+        "expected_tool": "create_lead",
+        "expected_intent": "lead.create",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Create a company called ABC",
+        "expected_tool": "create_company",
+        "expected_intent": "company.create",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Register a contact named Sarah for FutureAI",
+        "expected_tool": "create_contact",
+        "expected_intent": "contact.create",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Update Ahmed status to Qualified",
+        "expected_tool": "update_lead_status",
+        "expected_intent": "lead.update_status",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Move Ahmed to Negotiation stage",
+        "expected_tool": "update_deal_stage",
+        "expected_intent": "deal.update_stage",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Create a deal for Ahmed worth 500k",
+        "expected_tool": "create_deal",
+        "expected_intent": "deal.create",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Log a note for Ahmed: very interested client",
+        "expected_tool": "log_activity",
+        "expected_intent": "activity.log",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Create follow up task for Ahmed",
+        "expected_tool": "create_task",
+        "expected_intent": "task.create",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "Show dashboard report",
+        "expected_tool": "generate_dashboard",
+        "expected_intent": "analytics.dashboard",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "What is the conversion rate?",
+        "expected_tool": "conversion_report",
+        "expected_intent": "analytics.conversion",
+        "expected_output_type": "tool_call"
+    }
+]

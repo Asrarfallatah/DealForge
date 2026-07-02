@@ -1,0 +1,38 @@
+[
+    {
+        "input": "Add a new lead named Ahmed from ABC company",
+        "expected_tool": "create_lead",
+        "expected_intent": "lead.create",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "update it to qualified",
+        "expected_tool": "update_lead_status",
+        "expected_intent": "memory.resolve_reference",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "move him to negotiation",
+        "expected_tool": "update_deal_stage",
+        "expected_intent": "memory.resolve_reference",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "log a note: he is very interested",
+        "expected_tool": "log_activity",
+        "expected_intent": "memory.resolve_reference",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "create a task for follow up",
+        "expected_tool": "create_task",
+        "expected_intent": "task.create",
+        "expected_output_type": "tool_call"
+    },
+    {
+        "input": "what is his status?",
+        "expected_tool": "get_lead_details",
+        "expected_intent": "memory.resolve_reference",
+        "expected_output_type": "tool_call"
+    }
+]
